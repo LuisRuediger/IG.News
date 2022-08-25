@@ -1,5 +1,4 @@
 import React from "react";
-import styles from '../styles/home.module.scss'
 import Head from 'next/head'
 
 export default function Home() {
@@ -8,7 +7,7 @@ export default function Home() {
       <Head>
         <title>ig.news</title>
       </Head>
-      <h1 className={styles.title}>Hello World</h1>
+      <h1 >Hello World</h1>
     </>
   )
 }
