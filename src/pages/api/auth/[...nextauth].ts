@@ -29,7 +29,7 @@ export default NextAuth({
           { data: { email } }
         )
       )
-      
+
       return true
      } catch {
       return false
