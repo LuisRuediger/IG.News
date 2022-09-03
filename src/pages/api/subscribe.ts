@@ -17,7 +17,7 @@ const Subscribe = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
     const session = await getSession({ req })
 
-    const user: User = await fauna.query(
+    const user = await fauna.query<User>(
       q.Get(
         q.Match(
           q.Index('user_by_email'),
@@ -40,7 +40,7 @@ const Subscribe = async (req: NextApiRequest, res: NextApiResponse) => {
           q.Ref(q.Collection('users'), user.ref.id),
           {
             data: {
-              stripe_customes_id: stripeCustomer.id
+              stripe_customer_id: stripeCustomer.id
             }
           }
         )
