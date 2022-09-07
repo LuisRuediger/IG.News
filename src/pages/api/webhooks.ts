@@ -5,22 +5,18 @@ import { stripe } from "../../services/stripe";
 import { saveSubscription } from "./_lib/manageSubscription";
 
 async function buffer(readable: Readable) {
-  const chunk = [];
-
-  for await (const chunk of readable) { 
-    chunk.push(
-      typeof chunk === "string" ? Buffer.from(chunk) : chunk
-    );
+  const chunks = [];
+  for await (const chunk of readable) {
+      chunks.push(typeof chunk === "string" ? Buffer.from(chunk) : chunk);
   }
-
-  return Buffer.concat(chunk)
+  return Buffer.concat(chunks);
 }
 
-export const config = { 
+export const config = {
   api: {
-    bodyParser: false
-  }
-}
+      bodyParser: false,
+  },
+};
 
 const relevantEvent = new Set([
   'checkout.session.completed',
