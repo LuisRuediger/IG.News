@@ -14,7 +14,7 @@ async function buffer(readable: Readable) {
 
 export const config = {
   api: {
-      bodyParser: false,
+    bodyParser: false,
   },
 };
 
@@ -24,8 +24,7 @@ const relevantEvent = new Set([
   'customer.subscription.deleted',
 
 ])
-
-async function webhooks(req: NextApiRequest, res: NextApiResponse) {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
     const buf = await buffer(req)
     const secret = req.headers['stripe-signature']
@@ -38,7 +37,7 @@ async function webhooks(req: NextApiRequest, res: NextApiResponse) {
       return res.status(400).send(`Webhook error: ${err.message}`)
     }
 
-    const type = event.type
+    const { type } = event
 
     if (relevantEvent.has(type)) {
       try { 
@@ -50,7 +49,7 @@ async function webhooks(req: NextApiRequest, res: NextApiResponse) {
             await saveSubscription(
               subscription.id,
               subscription.customer.toString(),
-              false
+              false 
               )
 
             break;
@@ -79,4 +78,3 @@ async function webhooks(req: NextApiRequest, res: NextApiResponse) {
   }
 }
 
-export default webhooks
