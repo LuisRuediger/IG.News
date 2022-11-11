@@ -6,7 +6,7 @@ Projeto IG.News é um blog de assinatura, onde posts são exibidos ao usuário c
 ---
 
 <p align="center">
-  <img src="./github/IG.News.png"/>
+  <img src="./.github/IG.News.png"/>
 </p>
 
 ---
