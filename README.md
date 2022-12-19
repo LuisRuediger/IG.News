@@ -1,4 +1,4 @@
-# IG.News <img align="right" src="https://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge"/>
+# IG.News 
  
 Projeto IG.News é um blog de assinatura, onde posts são exibidos ao usuário caso ele tenha uma assinatura ativa. O projeto tem integração com o Stripe e login social com o Github. Desenvolvido durante as aulas do Ignite @Rocketseat.<br/>
 > Para ver o projeto rodando você pode acessar este [Link](link.com.br).
